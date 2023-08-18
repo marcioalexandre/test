@@ -1,4 +1,4 @@
-# marcio-test
+# Marcio test
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 Non-official project regarding a challenge sent by Truphone.
@@ -17,4 +17,9 @@ $ mvn quarkus:add-extension -Dextensions="quarkus-smallrye-reactive-messaging-ka
 $ docker compose -f docker-compose-kafka.yaml up -d
 $ docker compose -f docker-compose-postgres.yaml up -d
 
-# Last update in this file: Aug, 18th.
+
+# Author:
+Marcio Alexandre Silva
+marcio.alexandre83@gmail.com
+
+Last update in this file: Aug, 18th.
