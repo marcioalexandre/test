@@ -1,0 +1,70 @@
+'%dev':
+  quarkus:
+    http:
+      port: 8080
+    # --------------------------------------------- #
+    # ------------- flyway + Postgres ------------- #
+    # --------------------------------------------- #
+    datasource:
+      devservices:
+        enabled: false
+      db-kind: postgresql
+      username: truphone
+      password: truphone
+      jdbc:
+        url: jdbc:postgresql://0.0.0.0:5435/truphone
+    flyway:
+      migrate-at-start: true
+      locations: db/migration/locator
+    swagger-ui:
+      always-include: true
+
+  # ------------------------------------- #
+  # ---------- kafka config ------------- #
+  # ------------------------------------- #
+  kafka:
+    bootstrap:
+      servers: localhost:9092
+  mp:
+    messaging:
+      #to kafka
+      outgoing:
+        untrusted-devices-out:
+          connector: smallrye-kafka
+          topic: untrusted-devices
+          value:
+            deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        portugal-security-action-out:
+          connector: smallrye-kafka
+          topic: portugal-security-action
+          value:
+            deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        spain-security-action-out:
+          connector: smallrye-kafka
+          topic: spain-security-action
+          value:
+            deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #from kafka
+      incoming:
+        untrusted-devices-in:
+          connector: smallrye-kafka
+          topic: untrusted-devices
+          value:
+            deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        portugal-security-action-in:
+          connector: smallrye-kafka
+          topic: portugal-security-action
+          value:
+            deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        spain-security-action-in:
+          connector: smallrye-kafka
+          topic: spain-security-action
+          value:
+            deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+'%Test':
+
+'%Integration':
+
+'%Production':
+
